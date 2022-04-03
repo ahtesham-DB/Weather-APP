@@ -135,7 +135,7 @@ body{
     position:relative;
     width:100%;
     background-color:var(--smoke-white);
-    height:60px;
+    height:40px;
     display:flex;
     justify-content:space-around;
     align-items:center;
@@ -158,4 +158,5 @@ body{
     text-decoration: none;
     display: inline-block;
     font-size: 18px;
+    margin-bottom: 15px;
   }
