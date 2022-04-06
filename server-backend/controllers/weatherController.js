@@ -1,10 +1,17 @@
 import express from "express";
 import request from "request";
+
+//if needs implement mongoDB database as client requirement 
 // import mongoose from "mongoose";
 // import weatherDBModel from "../models/weatherDBModel.js";
 
 const router = express.Router();
 const weatherApiKey = `${process.env.WEATHERAPIKEY}`;
+
+
+  // First Set Up Query to access Latitude and Longitude
+  // Second fetching data from API Provide
+  // Third modifies data in the easiest way to implement for the front-end 
 
 export const getWeather = async (req, res) => {
   const { lat, long } = req.query;
@@ -27,12 +34,15 @@ export const getWeather = async (req, res) => {
   });
 };
 
+
+// implement POST Async function,  Express Js  
+// Get  city name passed in the form body 
+ // Get Zip Code And Cuntry Code Split Data and pass to third party API Provide to fetch Data 
 export const postWeather = async (req, res) => {
   // Get city name passed in the form body
   let data = req.body.data;
   let url;
   console.log("url", url);
-  console.log("data get from body", data);
 
   if (data.split("_")[0] === "city") {
     let city = data.split("_")[1];
@@ -41,10 +51,9 @@ export const postWeather = async (req, res) => {
   } else if (data.split("_")[0] === "zipcode") {
     let zipcode = data.split("_")[1].trim();
     let cuntry_code = data.split("_")[2].trim();
-    console.log("zipcode_data", `${zipcode}${cuntry_code}`);
+    //console.log("zipcode_data", `${zipcode}${cuntry_code}`);
     url = `https://api.openweathermap.org/data/2.5/weather?zip=${zipcode},${cuntry_code}&appid=0e8653259a8d5a9634be266951e936ce`;
-    console.log("url", url);
-    console.log("data after req", data);
+
     // url = `https://api.openweathermap.org/data/2.5/weather?zip=${parseInt(zipcode)},us&appid=${weatherApiKey}`
   }
 
