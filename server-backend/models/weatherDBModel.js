@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+//  To create mongoDB Database Model used Mongoose library 
 const weatherDB = mongoose.Schema({
   weatherFahrenheit: String,
   weatherCelsiusL: String,
